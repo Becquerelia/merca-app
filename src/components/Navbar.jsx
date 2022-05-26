@@ -1,9 +1,72 @@
+//!IMPORTS:
+import { useNavigate } from "react-router-dom";
+import { AppBar, Box, Button, IconButton, Toolbar } from "@mui/material";
 
-
+//!MAIN FUNCTION:
 function Navbar() {
+  const navigate = useNavigate();
+
+  //RENDER VIEW:
   return (
-    <div>Navbar</div>
-  )
+    <AppBar position={"static"}>
+      <Toolbar sx={{ backgroundColor: "#229e6b", flexGrow: "1" }}>
+        <Button
+          variant="text"
+          sx={{ color: "#FFFFFF" }}
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Home
+        </Button>
+        <Box
+          sx={{
+            marginLeft: "auto",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "right",
+          }}
+        >
+          <Button
+            sx={{
+              marginLeft: "auto",
+              color: "#FFFFFF",
+              textDecoration: "none",
+            }}
+            onClick={() => {
+              navigate("/product-list");
+            }}
+          >
+            Product List
+          </Button>
+
+          <Button
+            sx={{
+              marginLeft: "auto",
+              color: "#FFFFFF",
+            }}
+            onClick={() => {
+              navigate("/about-me");
+            }}
+          >
+            About me
+          </Button>
+
+          <Button
+            onClick={() => {
+              navigate("/contact");
+            }}
+            sx={{
+              marginLeft: "auto ",
+              color: "#FFFFFF",
+            }}
+          >
+            Contact
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
+  );
 }
 
-export default Navbar
+export default Navbar;

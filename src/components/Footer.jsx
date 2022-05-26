@@ -2,7 +2,9 @@
 
 function Footer() {
   return (
-    <div>Footer</div>
+    <div>
+      <h4>© 2022 Eva - Prueba para Mercadona :)</h4>
+    </div>
   )
 }
 
