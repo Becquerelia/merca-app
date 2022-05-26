@@ -1,6 +1,6 @@
 //!IMPORTS:
 import { useNavigate } from "react-router-dom";
-import { AppBar, Box, Button, IconButton, Toolbar } from "@mui/material";
+import { AppBar, Button, Toolbar } from "@mui/material";
 
 //!MAIN FUNCTION:
 function Navbar() {
