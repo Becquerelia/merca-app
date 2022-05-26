@@ -31,19 +31,7 @@ function Navbar() {
           }}
         >
           Product List
-        </Button>
-
-        <Button
-          sx={{
-            marginLeft: "auto",
-            color: "#FFFFFF",
-          }}
-          onClick={() => {
-            navigate("/about-me");
-          }}
-        >
-          About me
-        </Button>
+        </Button>       
 
         <Button
           onClick={() => {
