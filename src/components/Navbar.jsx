@@ -19,51 +19,43 @@ function Navbar() {
         >
           Home
         </Button>
-        <Box
+
+        <Button
           sx={{
             marginLeft: "auto",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "right",
+            color: "#FFFFFF",
+            textDecoration: "none",
+          }}
+          onClick={() => {
+            navigate("/product-list");
           }}
         >
-          <Button
-            sx={{
-              marginLeft: "auto",
-              color: "#FFFFFF",
-              textDecoration: "none",
-            }}
-            onClick={() => {
-              navigate("/product-list");
-            }}
-          >
-            Product List
-          </Button>
+          Product List
+        </Button>
 
-          <Button
-            sx={{
-              marginLeft: "auto",
-              color: "#FFFFFF",
-            }}
-            onClick={() => {
-              navigate("/about-me");
-            }}
-          >
-            About me
-          </Button>
+        <Button
+          sx={{
+            marginLeft: "auto",
+            color: "#FFFFFF",
+          }}
+          onClick={() => {
+            navigate("/about-me");
+          }}
+        >
+          About me
+        </Button>
 
-          <Button
-            onClick={() => {
-              navigate("/contact");
-            }}
-            sx={{
-              marginLeft: "auto ",
-              color: "#FFFFFF",
-            }}
-          >
-            Contact
-          </Button>
-        </Box>
+        <Button
+          onClick={() => {
+            navigate("/contact");
+          }}
+          sx={{
+            marginLeft: "auto ",
+            color: "#FFFFFF",
+          }}
+        >
+          Contact
+        </Button>
       </Toolbar>
     </AppBar>
   );
