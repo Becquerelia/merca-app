@@ -3,7 +3,7 @@
 }
 
 button {
-  color: "#FFFFFF";
+  color: white;
   background-color: #26b879;
   padding: 1rem;
   border: none;
@@ -13,4 +13,12 @@ button {
 
 button:hover {
   background-color: #fca62c;
+}
+
+.loadingSpinner {
+  margin: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -66,7 +66,7 @@ function Home() {
                 navigate("/product-list");
               }}
             >
-             Ver Listado
+             VER LISTADO
             </button>
           </CardActions>
         </Card>
