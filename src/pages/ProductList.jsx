@@ -74,14 +74,13 @@ function ProductList() {
                   sx={{
                     p: 2,
                     my: 2,
-                    border: "1px solid",
+                    border: "2px solid",
                     borderColor: "#26b879",
                     borderRadius: "5px",
                     boxShadow: "#26b879",
-                    backgroundColor: "#26b879" 
                   }}
                 >
-                  
+                  {eachProduct.display_name}
                 </Box>
               </Grid>
             );
