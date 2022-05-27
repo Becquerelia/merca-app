@@ -64,7 +64,7 @@ function ProductList() {
 
   //RENDER VIEW:
   return (
-    <Container component={"main"} maxWidth={"sm"} sx={{ my: 2 }}>
+    <div className="App">
       <Box
         sx={{
           flexWrap: "wrap-reverse",
@@ -98,13 +98,14 @@ function ProductList() {
           display: "flex",
           flexDirection: "row",
           justifyContent: "spaceBetween",
-          pt: 10,
+          pt: 5,
         }}
       >
         {allProducts.map((eachProduct, index) => {
           return (
             <Card
               variant={"outlined"}
+              maxWidth={"sm"}
               sx={{ p: 3, m: 3, borderColor: "#26b879" }}
               key={eachProduct.id}
             >
@@ -126,9 +127,10 @@ function ProductList() {
                       <button><img src={plus} alt="Zoom +" width="15rem"/></button>
                     </CardActions>
                   </div>
-                  <div>
+                  <div className="cardText" >
                     <Typography
-                      sx={{ fontSize: 16, fontWeight: "bold" }}
+                    maxWidth={"sm"}
+                      sx={{ fontSize: 15, fontWeight: "bold" }}
                       color="black"
                       gutterBottom
                       align={"center"}
@@ -152,7 +154,7 @@ function ProductList() {
           );
         })}
       </Box>      
-    </Container>
+      </div>
   );
 }
 

@@ -26,8 +26,12 @@ button:hover {
 .cardStructure {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+
+.cardText {
+  max-width: 10rem;  
 }
 
 @media (max-width: 800px) {
