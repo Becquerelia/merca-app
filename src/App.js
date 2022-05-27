@@ -3,6 +3,7 @@ import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import Home from "./pages/Home";
+import CategoriesList from './pages/CategoriesList';
 import ProductList from './pages/ProductList';
 import Error from './pages/Error';
 import NotFound from './pages/NotFound';
@@ -21,7 +22,8 @@ function App() {
       <Routes >  
 
        <Route path="/" element={ <Home /> } />
-       <Route path="/product-list" element={ <ProductList /> } />
+       <Route path="/categories-list" element={ <CategoriesList /> } />
+       <Route path="/categories-list/:id/product-list" element={ <ProductList /> } />
         
 
        <Route path="/error" element={ <Error/> } />

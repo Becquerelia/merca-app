@@ -63,7 +63,7 @@ function Home() {
           
             <button
               onClick={() => {
-                navigate("/product-list");
+                navigate("/categories-list");
               }}
             >
              VER LISTADO

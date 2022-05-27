@@ -27,10 +27,10 @@ function Navbar() {
             textDecoration: "none",
           }}
           onClick={() => {
-            navigate("/product-list");
+            navigate("/categories-list");
           }}
         >
-          Product List
+          Products: Categories List
         </Button>       
 
         <Button
