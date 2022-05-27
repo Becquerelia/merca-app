@@ -2,9 +2,9 @@
 import { Paper, Container } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Collapse from "@mui/material/Collapse";
+import { Box, Grid, Collapse } from "@mui/material/";
 import SyncLoader from "react-spinners/SyncLoader";
-import AddForm from "../components/AddForm";
+import AddCategoryForm from "../components/AddCategoryForm";
 import axios from "axios";
 
 //!MAIN FUNCTION:
@@ -33,9 +33,9 @@ function CategoriesList() {
     }
   };
 
-   const addCategory = (category) => {
-     setExtraCategories([...extraCategories, category]);
-   };
+  const addCategory = (category) => {
+    setExtraCategories([...extraCategories, category]);
+  };
 
   //LOADING SYSTEM:
   if (!allCategories) {
@@ -49,28 +49,49 @@ function CategoriesList() {
   }
 
   //RENDER VIEW:
-  return <div>
-      <Container component={"main"} maxWidth={"sm"} sx={{ my: 5 }}>
+  return (
     <div>
-      <button onClick={() => setShowForm(!showForm)} > {showForm? "HIDE FORM" : "ADD CATEGORY"}</button>
-      <Collapse in={showForm} > <AddForm addCategory={addCategory} /> </Collapse>                
-    </div>         
-    
-    <Paper
-        variant={"outlined"}
-        sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-      >
-      {allCategories.map((eachCategory, index)=>{
-        return(
-          <div key={eachCategory.id}>
-          <Link to={`/categories-list/${eachCategory.id}/product-list`} >{eachCategory.name} </Link>
-          </div>
-          
-        )
-      })}        
-      </Paper>
-    </Container>
-  </div>;
+      <Container component={"main"} maxWidth={"sm"} sx={{ my: 5 }}>
+        <div>
+          <button onClick={() => setShowForm(!showForm)}>
+            {" "}
+            {showForm ? "HIDE FORM" : "ADD CATEGORY"}
+          </button>
+          <Collapse in={showForm}>
+            {" "}
+            <AddCategoryForm addCategory={addCategory} />{" "}
+          </Collapse>
+        </div>
+
+        <Paper
+          variant={"outlined"}
+          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+        >
+          {allCategories.map((eachCategory, index) => {
+            return (
+              <Grid item xs={12} sm={6} key={eachCategory.id}>
+                <Box
+                  sx={{
+                    p: 2,
+                    my: 2,
+                    border: "1px solid",
+                    borderColor: "#26b879",
+                    borderRadius: "5px",
+                    boxShadow: "#26b879",
+                    backgroundColor: "#26b879" 
+                  }}
+                >
+                  <Link to={`/categories-list/${eachCategory.id}/product-list`} style={{textDecoration: "none", color: "white"}} >
+                    <b>{eachCategory.name.toUpperCase()}</b>
+                  </Link>
+                </Box>
+              </Grid>
+            );
+          })}
+        </Paper>
+      </Container>
+    </div>
+  );
 }
 
 export default CategoriesList;

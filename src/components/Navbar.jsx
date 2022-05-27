@@ -17,7 +17,7 @@ function Navbar() {
             navigate("/");
           }}
         >
-          Home
+         <b>Home</b> 
         </Button>
 
         <Button
@@ -30,7 +30,7 @@ function Navbar() {
             navigate("/categories-list");
           }}
         >
-          Products: Categories List
+          <b>Products by Category</b> 
         </Button>       
 
         <Button
@@ -42,7 +42,7 @@ function Navbar() {
             color: "#FFFFFF",
           }}
         >
-          Contact
+          <b>Contact</b>
         </Button>
       </Toolbar>
     </AppBar>

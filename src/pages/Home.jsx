@@ -66,7 +66,7 @@ function Home() {
                 navigate("/categories-list");
               }}
             >
-             VER LISTADO
+             <b>VER LISTADO</b>
             </button>
           </CardActions>
         </Card>
