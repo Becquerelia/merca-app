@@ -23,6 +23,13 @@ button:hover {
   align-items: center;
 }
 
+.cardStructure {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (max-width: 800px) {
   img {
     width: 80%;

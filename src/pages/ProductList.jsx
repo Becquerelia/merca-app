@@ -11,6 +11,7 @@ import {
   CardActions,
   Divider,
 } from "@mui/material";
+import plus from "../assets/plus.png"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SyncLoader from "react-spinners/SyncLoader";
@@ -96,7 +97,7 @@ function ProductList() {
           flexWrap: "wrap-reverse",
           display: "flex",
           flexDirection: "row",
-          justifyContent: "center",
+          justifyContent: "spaceBetween",
           pt: 10,
         }}
       >
@@ -108,12 +109,12 @@ function ProductList() {
               key={eachProduct.id}
             >
               <CardContent sx={{ p: 1 }}>
-                <div>
+                <div className="cardStructure" >
                   <div>
                     <img
                       src={eachProduct.thumbnail}
                       alt={eachProduct.display_name}
-                      width="50%"
+                      width="80%"
                     />
                     <CardActions
                       sx={{
@@ -122,7 +123,7 @@ function ProductList() {
                         justifyContent: "space-around",
                       }}
                     >
-                      <button>Lupita</button>
+                      <button><img src={plus} alt="Zoom +" width="15rem"/></button>
                     </CardActions>
                   </div>
                   <div>
@@ -134,9 +135,14 @@ function ProductList() {
                     >
                       {eachProduct.display_name}
                     </Typography>
+                    <br />
                     <Divider />
                     <Typography variant="body2" sx={{ my: 1 }}>
-                      Precio: {eachProduct.price_instructions.unit_price} €
+                      <b>Precio: </b> {eachProduct.price_instructions.unit_price} €
+                    </Typography>
+                    <Divider />
+                    <Typography variant="body2" sx={{ my: 1 }}>
+                    <b>Peso:</b> {eachProduct.price_instructions.unit_size * 1000} g  - <b>Formato:</b> {eachProduct.packaging}
                     </Typography>
                     <Divider />
                   </div>
@@ -145,47 +151,7 @@ function ProductList() {
             </Card>
           );
         })}
-      </Box>
-
-      <Paper
-        variant={"outlined"}
-        sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-      >
-        {allProducts.map((eachProduct, index) => {
-          return (
-            <Grid item xs={12} sm={6} key={eachProduct.id}>
-              <Box
-                sx={{
-                  p: 2,
-                  my: 2,
-                  border: "2px solid",
-                  borderColor: "#26b879",
-                  borderRadius: "5px",
-                  boxShadow: "#26b879",
-                }}
-              >
-                <CardContent sx={{ p: 1 }}>
-                  <Typography
-                    sx={{ fontSize: 16, fontWeight: "bold" }}
-                    gutterBottom
-                    align={"center"}
-                  >
-                    {eachProduct.display_name}
-                  </Typography>
-                  <Divider />
-                  <Typography
-                    sx={{ fontSize: 16, fontWeight: "bold" }}
-                    gutterBottom
-                    align={"center"}
-                  >
-                    Precio: {eachProduct.price_instructions.unit_price} €
-                  </Typography>
-                </CardContent>
-              </Box>
-            </Grid>
-          );
-        })}
-      </Paper>
+      </Box>      
     </Container>
   );
 }
