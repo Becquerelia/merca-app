@@ -53,13 +53,11 @@ function CategoriesList() {
     <div>
       <Container component={"main"} maxWidth={"sm"} sx={{ my: 5 }}>
         <div>
-          <button onClick={() => setShowForm(!showForm)}>
-            {" "}
-            {showForm ? "HIDE FORM" : "ADD CATEGORY"}
+          <button onClick={() => setShowForm(!showForm)}>           
+            {showForm ? <b>HIDE FORM</b>  : <b>ADD CATEGORY</b> }
           </button>
-          <Collapse in={showForm}>
-            {" "}
-            <AddCategoryForm addCategory={addCategory} />{" "}
+          <Collapse in={showForm}>            
+            <AddCategoryForm addCategory={addCategory} />
           </Collapse>
         </div>
 
