@@ -21,7 +21,7 @@ function CategoriesList() {
 
   //!INTERNAL FUNCTIONS:
   //FUNCTION TO GET CATEGORIES LIST:
-  const getAllCategories = async (category) => {
+  const getAllCategories = async () => {
     try {
       const response = await axios.get(
         "https://tienda.mercadona.es/api/v1_1/categories/92"
