@@ -33,7 +33,7 @@ function ProductDetails(props) {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <div >
       <Card
         variant={"outlined"}
         sx={{ py: 2, px: 8, m: 3, borderColor: "#26b879" }}
@@ -60,11 +60,11 @@ function ProductDetails(props) {
                   {eachProduct.display_name}
                 </DialogTitle>
                 <DialogContent>
-                   <img
-              src={eachProduct.thumbnail}
-              alt={eachProduct.display_name}
-              width="100%"
-            />
+                  <img
+                    src={eachProduct.thumbnail}
+                    alt={eachProduct.display_name}
+                    width="100%"
+                  />
                 </DialogContent>
               </Box>
             </Dialog>
