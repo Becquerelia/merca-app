@@ -23,6 +23,7 @@ import axios from "axios";
 function ProductList() {
   //CONSTANTS & HOOKS:
   const [allProducts, setAllProducts] = useState(null);
+  const [productTitle, setProductTitle] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -43,8 +44,8 @@ function ProductList() {
       console.log(response.data.categories);
       const data = response.data.categories;
       data.forEach((eachProduct) => {
-        //console.log(eachProduct, eachProduct.id, id)
         eachProduct.id == id && setAllProducts(eachProduct.products);
+        eachProduct.id == id && setProductTitle(eachProduct.name);
       });
     } catch (err) {
       navigate("/error");
@@ -65,26 +66,17 @@ function ProductList() {
   //RENDER VIEW:
   return (
     <div className="App">
-      <Box
-        sx={{
-          flexWrap: "wrap-reverse",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          pt: 10,
-        }}
-      >
+      <div>
         <Typography
-          sx={{ fontSize: 30, fontWeight: "bold" }}
-          color="text.primary"
+          sx={{ pt: 8, pb: 4, fontSize: 40}}
+          color="black"
           gutterBottom
           align={"center"}
         >
-          Chocolates tipoo...
+          {productTitle.toUpperCase()}
         </Typography>
-      </Box>
-      <div>
-        <button onClick={() => setShowForm(!showForm)}>
+
+        <button   style={{marginBottom: "2rem"}} onClick={() => setShowForm(!showForm)}>
           {showForm ? <b>HIDE FORM</b> : <b>ADD PRODUCT</b>}
         </button>
         <Collapse in={showForm}>
@@ -92,44 +84,28 @@ function ProductList() {
         </Collapse>
       </div>
 
-      <Box
-        sx={{
-          flexWrap: "wrap-reverse",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "spaceBetween",
-          pt: 5,
-        }}
-      >
+      <div className="cardGrid" >
         {allProducts.map((eachProduct, index) => {
           return (
             <Card
               variant={"outlined"}
               maxWidth={"sm"}
-              sx={{ p: 3, m: 3, borderColor: "#26b879" }}
+              sx={{ py:2, px: 8, m: 3, borderColor: "#26b879" }}
               key={eachProduct.id}
+              
             >
-              <CardContent sx={{ p: 1 }}>
-                <div className="cardStructure" >
-                  <div>
+              <CardContent sx={{ p: 1 }} className="cardText">
+                <div>
+                  
                     <img
                       src={eachProduct.thumbnail}
                       alt={eachProduct.display_name}
                       width="80%"
-                    />
-                    <CardActions
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-around",
-                      }}
-                    >
-                      <button><img src={plus} alt="Zoom +" width="15rem"/></button>
-                    </CardActions>
-                  </div>
-                  <div className="cardText" >
+                    />                    
+                  
+                  <div>
                     <Typography
-                    maxWidth={"sm"}
+                      maxWidth={"sm"}
                       sx={{ fontSize: 15, fontWeight: "bold" }}
                       color="black"
                       gutterBottom
@@ -140,21 +116,24 @@ function ProductList() {
                     <br />
                     <Divider />
                     <Typography variant="body2" sx={{ my: 1 }}>
-                      <b>Precio: </b> {eachProduct.price_instructions.unit_price} €
+                      <b>Precio: </b>{" "}
+                      {eachProduct.price_instructions.unit_price} €
                     </Typography>
                     <Divider />
                     <Typography variant="body2" sx={{ my: 1 }}>
-                    <b>Peso:</b> {eachProduct.price_instructions.unit_size * 1000} g  - <b>Formato:</b> {eachProduct.packaging}
+                      <b>Peso:</b>{" "}
+                      {eachProduct.price_instructions.unit_size * 1000} g -{" "}
+                      <b>Formato:</b> {eachProduct.packaging}
                     </Typography>
-                    <Divider />
+                   
                   </div>
                 </div>
               </CardContent>
             </Card>
           );
         })}
-      </Box>      
       </div>
+    </div>
   );
 }
 
