@@ -44,6 +44,11 @@ button:hover {
   cursor: zoom-in; 
 }
 
+#footer-style {
+  color: #229e6b;
+  margin-top: 8rem;
+}
+
 @media (max-width: 800px) {
   img {
     width: 80%;

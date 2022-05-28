@@ -2,7 +2,7 @@
 
 function Footer() {
   return (
-    <div>
+    <div id="footer-style" >
       <h4>© 2022 Eva - Prueba para Mercadona :)</h4>
     </div>
   )
