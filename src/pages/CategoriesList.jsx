@@ -1,4 +1,5 @@
 //!IMPORTS:
+import { apiProducts } from "../utils/apiProducts";
 import { Paper, Container } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -20,17 +21,24 @@ function CategoriesList() {
   }, []);
 
   //!INTERNAL FUNCTIONS:
-  //FUNCTION TO GET CATEGORIES LIST:
-  const getAllCategories = async () => {
-    try {
-      const response = await axios.get(
+
+  //FUNCTION TO GET CATEGORIES LIST BY API CALL:
+  /* const getAllCategories = async () => {
+     try {
+       const response = await axios.get(
         "https://tienda.mercadona.es/api/v1_1/categories/92"
-      );
-      console.log(response.data.categories);
-      setAllCategories(response.data.categories);
-    } catch (err) {
-      navigate("/error");
-    }
+       );
+       console.log(response.data.categories);
+       setAllCategories(response.data.categories);
+     } catch (err) {
+       navigate("/error");
+     }
+  }; */
+
+  //FUNCTION TO GET CATEGORIES FROM DATA FILE "apiProducts.js":
+  const getAllCategories = () => {
+    setAllCategories(apiProducts);
+    console.log(apiProducts);
   };
 
   const addCategory = (category) => {
@@ -53,10 +61,10 @@ function CategoriesList() {
     <div>
       <Container component={"main"} maxWidth={"sm"} sx={{ my: 5 }}>
         <div>
-          <button onClick={() => setShowForm(!showForm)}>           
-            {showForm ? <b>HIDE FORM</b>  : <b>ADD CATEGORY</b> }
+          <button onClick={() => setShowForm(!showForm)}>
+            {showForm ? <b>HIDE FORM</b> : <b>ADD CATEGORY</b>}
           </button>
-          <Collapse in={showForm}>            
+          <Collapse in={showForm}>
             <AddCategoryForm addCategory={addCategory} />
           </Collapse>
         </div>
@@ -76,10 +84,13 @@ function CategoriesList() {
                     borderColor: "#26b879",
                     borderRadius: "5px",
                     boxShadow: "#26b879",
-                    backgroundColor: "#26b879" 
+                    backgroundColor: "#26b879",
                   }}
                 >
-                  <Link to={`/categories-list/${eachCategory.id}/product-list`} style={{textDecoration: "none", color: "white"}} >
+                  <Link
+                    to={`/categories-list/${eachCategory.id}/product-list`}
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
                     <b>{eachCategory.name.toUpperCase()}</b>
                   </Link>
                 </Box>

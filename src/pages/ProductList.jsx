@@ -14,6 +14,7 @@ import {
   Divider,
   IconButton,
 } from "@mui/material";
+import { apiProducts } from "../utils/apiProducts";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SyncLoader from "react-spinners/SyncLoader";
@@ -37,8 +38,8 @@ function ProductList() {
 
   //!INTERNAL FUNCTIONS:
 
-  //FUNCTION TO GET CATEGORIES LIST:
-  const getAllProducts = async () => {
+  //FUNCTION TO GET PRODUCT LIST BY API CALL:
+  /* const getAllProducts = async () => {
     try {
       const response = await axios.get(
         "https://tienda.mercadona.es/api/v1_1/categories/92"
@@ -52,7 +53,15 @@ function ProductList() {
     } catch (err) {
       navigate("/error");
     }
-  };
+  }; */
+
+  //FUNCTION TO GET PRODUCT LIST FROM DATA FILE "apiProducts.js":
+  const getAllProducts = () => {
+    apiProducts.forEach((eachProduct) => {
+      eachProduct.id == id && setAllProducts(eachProduct.products);
+      eachProduct.id == id && setProductTitle(eachProduct.name);
+    }
+  )};
   
   //LOADING SYSTEM:
   if (!allProducts) {
