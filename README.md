@@ -2,7 +2,7 @@
 
 Mini catalog of chocolate products from Mercadona available for consult in web and mobile version.
 
-You can visit it at: XXX
+You can visit it at: https://mercadona-choco.netlify.app
 
 ## Description:
 
