@@ -56,7 +56,7 @@ function Contact() {
             align={"center"}
           >
             Haznos llegar tus comentarios a través de nuestro correo electrónico haciendo click en el icono superior o en este 
-            <a href="sugerencias@mercadona.es"> enlace</a>.
+            <a href="mailto:sugerencias@mercadona.es"> enlace</a>.
           </Typography>
         </CardContent>
       </Card>
