@@ -73,7 +73,7 @@ function Contact() {
             gutterBottom
             align={"center"}
           >
-            También puedes contactar con nosotros desde nuestro <a href="https://www.facebook.com/mercadona/">Facebook</a>, <a href="https://twitter.com/mercadona?lang=es">Twitter</a>, <a href="https://www.youtube.com/mercadona">Youtube</a>, <a href="https://www.linkedin.com/company/mercadona/?originalSubdomain=es">Instagram</a> y <a href="https://www.linkedin.com/company/mercadona/?originalSubdomain=es">Linkedin</a>.
+            También puedes contactar con nosotros desde nuestro <a href="https://www.facebook.com/mercadona/">Facebook</a>, <a href="https://twitter.com/mercadona?lang=es">Twitter</a>, <a href="https://www.youtube.com/mercadona">Youtube</a>, <a href="https://www.instagram.com/mercadona/?hl=ess">Instagram</a> y <a href="https://www.linkedin.com/company/mercadona/?originalSubdomain=es">Linkedin</a>.
           </Typography>
         </CardContent>
       </Card>
