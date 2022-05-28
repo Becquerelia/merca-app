@@ -57,13 +57,13 @@ function AddForm(props) {
                   id={"name"}
                   autoComplete="name"
                   variant={"filled"}
+                  color="success"
                   label={"Nombre del producto"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
                   name="name"
-                  onChange={(e) => setName(e.target.value)}
-                  color={"secondary"}
+                  onChange={(e) => setName(e.target.value)}                  
                   value={name}
                   sx={{ mb: 1 }}
                 />
@@ -74,6 +74,7 @@ function AddForm(props) {
                   id={"priceByUnit"}
                   autoComplete="priceByUnit"
                   variant={"filled"}
+                  color="success"
                   label={"Precio (€)"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
@@ -81,7 +82,6 @@ function AddForm(props) {
                   InputProps={{ inputProps: { min: 0 } }}
                   name="priceByUnit"
                   onChange={(e) => setPriceByUnit(e.target.value)}
-                  color={"secondary"}
                   value={priceByUnit}
                   sx={{ mb: 1 }}
                 />
@@ -92,13 +92,13 @@ function AddForm(props) {
                   id={"weight"}
                   autoComplete="weight"
                   variant={"filled"}
+                  color="success"
                   label={"Peso (en gramos)"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
                   name="weight"
-                  onChange={(e) => setWeight(e.target.value)}
-                  color={"secondary"}
+                  onChange={(e) => setWeight(e.target.value)}                  
                   value={weight}
                   sx={{ mb: 1 }}
                 />
@@ -109,13 +109,13 @@ function AddForm(props) {
                   id={"format"}
                   autoComplete="format"
                   variant={"filled"}
+                  color="success"
                   label={"Formato"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
                   name="format"
                   onChange={(e) => setFormat(e.target.value)}
-                  color={"secondary"}
                   value={format}
                   sx={{ mb: 1 }}
                 />
@@ -126,13 +126,13 @@ function AddForm(props) {
                   id={"image"}
                   autoComplete="image"
                   variant={"filled"}
+                  color="success"
                   label={"URL de la Imagen"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
                   name="image"
                   onChange={(e) => setImage(e.target.value)}
-                  color={"secondary"}
                   value={image}
                   sx={{ mb: 1 }}
                 />

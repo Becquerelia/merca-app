@@ -1,24 +1,14 @@
 //!IMPORTS:
-import {
-  Box,
-  Modal,
+import { 
   Typography,
-  Collapse,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Card,
-  CardContent,
-  Divider,
-  IconButton,
+  Collapse,  
 } from "@mui/material";
 import { apiProducts } from "../utils/apiProducts";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SyncLoader from "react-spinners/SyncLoader";
 import AddForm from "../components/AddForm";
+import Search from "../components/Search";
 import ProductDetails from "../components/ProductDetails";
 import axios from "axios";
 
@@ -27,6 +17,7 @@ import axios from "axios";
 function ProductList() {
   //CONSTANTS & HOOKS:
   const [allProducts, setAllProducts] = useState(null);
+  const [allProductsToRender, setAllProductsToRender ] = useState(null)
   const [productTitle, setProductTitle] = useState(null);
   const [showForm, setShowForm] = useState(false);  
   const { id } = useParams();
@@ -48,6 +39,7 @@ function ProductList() {
       const data = response.data.categories;
       data.forEach((eachProduct) => {
         eachProduct.id == id && setAllProducts(eachProduct.products);
+        eachProduct.id == id && setAllProductsToRender(eachProduct.products);
         eachProduct.id == id && setProductTitle(eachProduct.name);
       });
     } catch (err) {
@@ -59,16 +51,26 @@ function ProductList() {
   const getAllProducts = () => {
     apiProducts.forEach((eachProduct) => {
       eachProduct.id == id && setAllProducts(eachProduct.products);
+      eachProduct.id == id && setAllProductsToRender(eachProduct.products);
       eachProduct.id == id && setProductTitle(eachProduct.name);
     }
   )};
 
   //FUNCTION TO ADD PRODUCT:
   const addProduct = (product) => {
-    setAllProducts( [product, ...allProducts] )
-    setShowForm(!showForm)
+    setAllProducts([product, ...allProducts]);
+    setAllProductsToRender([product, ...allProducts]);
+    setShowForm(!showForm);
   }
   
+//FUNCTION TO SEARCH A PRODUCT:
+const searchProduct = (searchQuery) => {  
+  const filteredProducts = allProducts.filter((eachProduct) => {
+    return eachProduct.display_name.toUpperCase().includes(searchQuery.toUpperCase());    
+  });
+  setAllProductsToRender(filteredProducts);
+}
+
   //LOADING SYSTEM:
   if (!allProducts) {
     return (
@@ -102,11 +104,12 @@ function ProductList() {
         <Collapse in={showForm}>
           <AddForm addProduct={addProduct} />
         </Collapse>
+        <Search searchProduct={searchProduct} />
       </div>
 
       <div className="cardGrid">
       
-        {allProducts.map((eachProduct, index) => {          
+        {allProductsToRender.map((eachProduct, index) => {          
           return (
             <ProductDetails eachProduct={eachProduct} />            
           );
