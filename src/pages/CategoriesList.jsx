@@ -5,15 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Box, Grid, Collapse } from "@mui/material/";
 import SyncLoader from "react-spinners/SyncLoader";
-import AddCategoryForm from "../components/AddCategoryForm";
 import axios from "axios";
 
 //!MAIN FUNCTION:
 function CategoriesList() {
   //CONSTANTS & HOOKS:
-  const [allCategories, setAllCategories] = useState(null);
-  const [extraCategories, setExtraCategories] = useState(null);
-  const [showForm, setShowForm] = useState(false);
+  const [allCategories, setAllCategories] = useState(null); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,10 +38,6 @@ function CategoriesList() {
     console.log(apiProducts);
   };
 
-  const addCategory = (category) => {
-    setExtraCategories([...extraCategories, category]);
-  };
-
   //LOADING SYSTEM:
   if (!allCategories) {
     return (
@@ -59,15 +52,7 @@ function CategoriesList() {
   //RENDER VIEW:
   return (
     <div>
-      <Container component={"main"} maxWidth={"sm"} sx={{ my: 5 }}>
-        <div>
-          <button onClick={() => setShowForm(!showForm)}>
-            {showForm ? <b>HIDE FORM</b> : <b>ADD CATEGORY</b>}
-          </button>
-          <Collapse in={showForm}>
-            <AddCategoryForm addCategory={addCategory} />
-          </Collapse>
-        </div>
+      <Container component={"main"} maxWidth={"sm"} sx={{ my: 5 }}>        
 
         <Paper
           variant={"outlined"}

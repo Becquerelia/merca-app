@@ -19,16 +19,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SyncLoader from "react-spinners/SyncLoader";
 import AddForm from "../components/AddForm";
-import axios from "axios";
 import ProductDetails from "../components/ProductDetails";
+import axios from "axios";
+
 
 //!MAIN FUNCTION:
 function ProductList() {
   //CONSTANTS & HOOKS:
   const [allProducts, setAllProducts] = useState(null);
   const [productTitle, setProductTitle] = useState(null);
-  const [showForm, setShowForm] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [showForm, setShowForm] = useState(false);  
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -62,6 +62,12 @@ function ProductList() {
       eachProduct.id == id && setProductTitle(eachProduct.name);
     }
   )};
+
+  //FUNCTION TO ADD PRODUCT:
+  const addProduct = (product) => {
+    setAllProducts( [product, ...allProducts] )
+    setShowForm(!showForm)
+  }
   
   //LOADING SYSTEM:
   if (!allProducts) {
@@ -91,10 +97,10 @@ function ProductList() {
           style={{ marginBottom: "2rem" }}
           onClick={() => setShowForm(!showForm)}
         >
-          {showForm ? <b>HIDE FORM</b> : <b>ADD PRODUCT</b>}
+          {showForm ? <b>OCULTAR</b> : <b>AÑADIR PRODUCTO</b>}
         </button>
         <Collapse in={showForm}>
-          <AddForm />
+          <AddForm addProduct={addProduct} />
         </Collapse>
       </div>
 

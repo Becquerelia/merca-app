@@ -83,12 +83,12 @@ function ProductDetails(props) {
               <Divider />
               <Typography variant="body2" sx={{ my: 1 }}>
                 <b>Precio: </b>
-                {eachProduct.price_instructions.unit_price} €
+                { eachProduct.price !== null ? eachProduct.price : eachProduct.price_instructions.unit_price} €
               </Typography>
               <Divider />
               <Typography variant="body2" sx={{ my: 1 }}>
                 <b>Peso: </b>
-                {eachProduct.price_instructions.unit_size * 1000} g
+                {eachProduct.weight ? eachProduct.weight : eachProduct.price_instructions.unit_size * 1000} g
               </Typography>
               <Divider />
               <Typography variant="body2" sx={{ my: 1 }}>

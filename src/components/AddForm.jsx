@@ -13,55 +13,26 @@ import {
 //!MAIN FUNCTION:
 function AddForm(props) {
   //CONSTANTS & HOOKS:
-  const [title, setTitle] = useState("");
+  const { addProduct } = props;
+  const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [weight, setWeight] = useState("");
   const [format, setFormat] = useState("");
-  const [image, setImage] = useState("");
-  const navigate = useNavigate();
-  const { addProduct } = props;
+  const [image, setImage] = useState("");  
+  
 
   //!INTERNAL FUNCTIONS:
 
-  //HANDLE FUNCTIONS:
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
-  };
-  const handlePrice = (e) => {
-    setPrice(e.target.value);
-  };
-  const handleWeight = (e) => {
-    setWeight(e.target.value);
-  };
-  const handleFormat = (e) => {
-    setFormat(e.target.value);
-  };
-  const handleImage = (e) => {
-    setImage(e.target.value);
-  };
-
   //FUNCTION TO ADD NEW PRODUCT:
-  // const handleSubmit = async (e) =>{
-  //   e.preventDefault()
-  //   try {
-  //     const newProduct = {title, price, weight, format, image}
-  //     //!await addNewEventService(newEvent)
-  //     getAllProducts()
-  //     setTitle("")
-  //     setPrice(0)
-  //     setWeight("")
-  //     setFormat("")
-  //     setImage("")
-  //   }
-  //   catch(err){
-  //     navigate("/error")
-  //   }
-  // }
-
-  const handleSubmit = (e) => {
+   const handleSubmit = async (e) =>{
     e.preventDefault();
-    addProduct({ title, price, weight, format, image });
-  };
+    addProduct({ display_name:name, price:price, weight:weight, packaging:format, thumbnail:image });
+    setName("");
+    setPrice("");
+    setWeight("");
+    setFormat("");
+    setImage("");
+  }
 
   //RENDER VIEW:
   return (
@@ -83,17 +54,17 @@ function AddForm(props) {
                   required
                   fullWidth
                   type={"text"}
-                  id={"title"}
-                  autoComplete="title"
+                  id={"name"}
+                  autoComplete="name"
                   variant={"filled"}
-                  label={"Title"}
+                  label={"Nombre del producto"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
-                  name="title"
-                  onChange={(e) => setTitle(e.target.value)}
+                  name="name"
+                  onChange={(e) => setName(e.target.value)}
                   color={"secondary"}
-                  value={title}
+                  value={name}
                   sx={{ mb: 1 }}
                 />
                 <TextField
@@ -103,10 +74,11 @@ function AddForm(props) {
                   id={"price"}
                   autoComplete="price"
                   variant={"filled"}
-                  label={"Price"}
+                  label={"Precio"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
+                  InputProps={{ inputProps: { min: 0 } }}
                   name="price"
                   onChange={(e) => setPrice(e.target.value)}
                   color={"secondary"}
@@ -120,7 +92,7 @@ function AddForm(props) {
                   id={"weight"}
                   autoComplete="weight"
                   variant={"filled"}
-                  label={"Weight"}
+                  label={"Peso (en gramos)"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
@@ -137,7 +109,7 @@ function AddForm(props) {
                   id={"format"}
                   autoComplete="format"
                   variant={"filled"}
-                  label={"Format"}
+                  label={"Formato"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
@@ -154,7 +126,7 @@ function AddForm(props) {
                   id={"image"}
                   autoComplete="image"
                   variant={"filled"}
-                  label={"Image URL"}
+                  label={"URL de la Imagen"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
@@ -165,7 +137,7 @@ function AddForm(props) {
                   sx={{ mb: 1 }}
                 />
 
-                <button>ADD</button>
+                <button>AÑADIR</button>
               </Box>
             </div>
           </Box>
