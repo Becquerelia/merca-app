@@ -15,7 +15,7 @@ function AddForm(props) {
   //CONSTANTS & HOOKS:
   const { addProduct } = props;
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
+  const [priceByUnit, setPriceByUnit] = useState(0);
   const [weight, setWeight] = useState("");
   const [format, setFormat] = useState("");
   const [image, setImage] = useState("");  
@@ -26,9 +26,9 @@ function AddForm(props) {
   //FUNCTION TO ADD NEW PRODUCT:
    const handleSubmit = async (e) =>{
     e.preventDefault();
-    addProduct({ display_name:name, price:price, weight:weight, packaging:format, thumbnail:image });
+    addProduct({ display_name:name, priceByUnit:priceByUnit, weight:weight, packaging:format, thumbnail:image });
     setName("");
-    setPrice("");
+    setPriceByUnit("");
     setWeight("");
     setFormat("");
     setImage("");
@@ -71,18 +71,18 @@ function AddForm(props) {
                   required
                   fullWidth
                   type={"number"}
-                  id={"price"}
-                  autoComplete="price"
+                  id={"priceByUnit"}
+                  autoComplete="priceByUnit"
                   variant={"filled"}
-                  label={"Precio"}
+                  label={"Precio (€)"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
                   InputProps={{ inputProps: { min: 0 } }}
-                  name="price"
-                  onChange={(e) => setPrice(e.target.value)}
+                  name="priceByUnit"
+                  onChange={(e) => setPriceByUnit(e.target.value)}
                   color={"secondary"}
-                  value={price}
+                  value={priceByUnit}
                   sx={{ mb: 1 }}
                 />
                 <TextField
