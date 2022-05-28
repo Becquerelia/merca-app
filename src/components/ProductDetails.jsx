@@ -1,6 +1,7 @@
 //!IMPORTS:
 import {
   Box,
+  TextField,
   Typography,
   Dialog,
   DialogActions,
@@ -21,8 +22,13 @@ function ProductDetails(props) {
   //CONSTANTS & HOOKS:
   const { eachProduct, updateProduct, deleteProduct } = props;
   const [open, setOpen] = useState(false);
-  const [openUpdate, setOpenUpdate] = useState(false);  
+  const [openUpdate, setOpenUpdate] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
+  const [name, setName] = useState(eachProduct.display_name);
+  const [priceByUnit, setPriceByUnit] = useState(eachProduct.priceByUnit);
+  const [weight, setWeight] = useState(eachProduct.weight);
+  const [format, setFormat] = useState(eachProduct.packaging);
+  const [image, setImage] = useState(eachProduct.thumbnail);
   const navigate = useNavigate();
 
   //!INTERNAL FUNCTIONS:
@@ -43,11 +49,17 @@ function ProductDetails(props) {
     e.preventDefault();
     setOpenDelete(true);
   };
-  
+
   //FUNCTION TO CLOSE MODAL AND UPDATE A PRODUCT:
   const handleUpdate = (e) => {
     e.preventDefault();
-    updateProduct({eachProduct});
+    updateProduct({
+      display_name: name,
+      priceByUnit: priceByUnit,
+      weight: weight,
+      packaging: format,
+      thumbnail: image,
+    });
     setOpenUpdate(false);
   };
 
@@ -140,19 +152,120 @@ function ProductDetails(props) {
                       Editar producto
                     </DialogTitle>
                     <DialogContent>
-                      <DialogContentText
-                        id="alert-dialog-description"
-                        color={"black"}
+                      <Box
+                        component="form"
+                        onSubmit={handleUpdate}
+                        noValidate
+                        sx={{ mt: 1 }}
                       >
-                        Actualizar...
-                      </DialogContentText>
+                        <TextField
+                          required
+                          fullWidth
+                          type={"text"}
+                          id={"name"}
+                          autoComplete="name"
+                          variant={"filled"}
+                          color="success"
+                          label={"Nombre del producto"}
+                          InputLabelProps={{
+                            style: { color: "#bdbdbd" },
+                          }}
+                          InputProps={{
+                            style: { color: "#229e6b" },
+                          }}
+                          name="name"
+                          onChange={(e) => setName(e.target.value)}
+                          value={name}
+                          sx={{ mb: 1 }}
+                        />
+                        <TextField
+                          required
+                          fullWidth
+                          type={"number"}
+                          id={"priceByUnit"}
+                          autoComplete="priceByUnit"
+                          variant={"filled"}
+                          color="success"
+                          label={"Precio (€)"}
+                          InputLabelProps={{
+                            style: { color: "#bdbdbd" },
+                          }}
+                          InputProps={{
+                            inputProps: { min: 0, color: "#229e6b" },
+                          }}
+                          name="priceByUnit"
+                          onChange={(e) => setPriceByUnit(e.target.value)}
+                          value={priceByUnit}
+                          sx={{ mb: 1 }}
+                        />
+                        <TextField
+                          required
+                          fullWidth
+                          type={"text"}
+                          id={"weight"}
+                          autoComplete="weight"
+                          variant={"filled"}
+                          color="success"
+                          label={"Peso (en gramos)"}
+                          InputLabelProps={{
+                            style: { color: "#bdbdbd" },
+                          }}
+                          InputProps={{
+                            style: { color: "#229e6b" },
+                          }}
+                          name="weight"
+                          onChange={(e) => setWeight(e.target.value)}
+                          value={weight}
+                          sx={{ mb: 1 }}
+                        />
+                        <TextField
+                          required
+                          fullWidth
+                          type={"text"}
+                          id={"format"}
+                          autoComplete="format"
+                          variant={"filled"}
+                          color="success"
+                          label={"Formato"}
+                          InputLabelProps={{
+                            style: { color: "#bdbdbd" },
+                          }}
+                          InputProps={{
+                            style: { color: "#229e6b" },
+                          }}
+                          name="format"
+                          onChange={(e) => setFormat(e.target.value)}
+                          value={format}
+                          sx={{ mb: 1 }}
+                        />
+                        <TextField
+                          required
+                          fullWidth
+                          type={"text"}
+                          id={"image"}
+                          autoComplete="image"
+                          variant={"filled"}
+                          color="success"
+                          label={"URL de la Imagen"}
+                          InputLabelProps={{
+                            style: { color: "#bdbdbd" },
+                          }}
+                          InputProps={{
+                            style: { color: "#229e6b" },
+                          }}
+                          name="image"
+                          onChange={(e) => setImage(e.target.value)}
+                          value={image}
+                          sx={{ mb: 1 }}
+                        />
+                        <DialogActions>
+                          <button onClick={() => setOpenUpdate(false)}>
+                            CANCELAR
+                          </button>
+                          <button onClick={handleUpdate}>ACTUALIZAR</button>
+                        </DialogActions>
+                      </Box>
                     </DialogContent>
-                    <DialogActions>
-                      <button onClick={() => setOpenUpdate(false)}>
-                        CANCELAR
-                      </button>
-                      <button onClick={handleUpdate}>ACTUALIZAR</button>
-                    </DialogActions>
                   </Box>
                 </Dialog>
                 <button
