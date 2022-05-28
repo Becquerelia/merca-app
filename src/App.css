@@ -39,6 +39,11 @@ button:hover {
   flex-direction: column; 
 }
 
+.zoomEffect:hover {
+  /*transform: scale(1.75);*/
+  cursor: zoom-in; 
+}
+
 @media (max-width: 800px) {
   img {
     width: 80%;

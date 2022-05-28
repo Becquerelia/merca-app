@@ -1,18 +1,19 @@
 //!IMPORTS:
 import {
-  Paper,
-  Container,
-  Typography,
   Box,
-  Grid,
+  Typography,
   Collapse,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Card,
   CardContent,
-  CardActions,
   Divider,
+  IconButton,
 } from "@mui/material";
-import plus from "../assets/plus.png";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SyncLoader from "react-spinners/SyncLoader";
 import AddForm from "../components/AddForm";
@@ -25,6 +26,7 @@ function ProductList() {
   const [allProducts, setAllProducts] = useState(null);
   const [productTitle, setProductTitle] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [open, setOpen] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -50,6 +52,17 @@ function ProductList() {
     } catch (err) {
       navigate("/error");
     }
+  };
+
+  //FUNCTION TO OPEN A MODAL WITH AN IMAGE:
+  const handleOpenModal = (e) => {
+    e.preventDefault();
+    setOpen(true);
+  };
+
+  //FUNCTION TO CLOSE MODAL AND SET STATE:
+  const handleClose = () => {
+    setOpen(false);
   };
 
   //LOADING SYSTEM:
@@ -102,7 +115,29 @@ function ProductList() {
                     src={eachProduct.thumbnail}
                     alt={eachProduct.display_name}
                     width="80%"
+                    className="zoomEffect"
+                    onClick={handleOpenModal}
                   />
+                  <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <Box sx={{ backgroundColor: "background.default" }}>
+                      <DialogTitle id="alert-dialog-title">
+                        {eachProduct.display_name}
+                      </DialogTitle>
+                      <DialogContent>
+                        <img
+                          src={eachProduct.thumbnail}
+                          alt={eachProduct.display_name}
+                          width="100%"
+                          onClick={handleOpenModal}
+                        />
+                      </DialogContent>
+                    </Box>
+                  </Dialog>
 
                   <div>
                     <Typography
