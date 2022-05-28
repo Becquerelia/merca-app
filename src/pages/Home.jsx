@@ -52,7 +52,7 @@ function Home() {
               ¡Haz click para consultar el listado de chocolates ordenados por categoría!
             </Typography>
 
-            <img src={cestaMercadona} alt="Logo" width="200rem"/>
+            <img src={cestaMercadona} alt="Logo" width="250rem"/>
             
           </CardContent>
           <CardActions

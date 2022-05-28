@@ -11,6 +11,8 @@ import {
   CardContent,
   Divider,
 } from "@mui/material";
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
@@ -33,7 +35,7 @@ function ProductDetails(props) {
   const handleClose = () => setOpen(false);
 
   return (
-    <div >
+    <div>
       <Card
         variant={"outlined"}
         sx={{ py: 2, px: 8, m: 3, borderColor: "#26b879" }}
@@ -83,17 +85,27 @@ function ProductDetails(props) {
               <Divider />
               <Typography variant="body2" sx={{ my: 1 }}>
                 <b>Precio: </b>
-                { eachProduct.priceByUnit ? eachProduct.priceByUnit : eachProduct.price_instructions.unit_price} €
+                {eachProduct.priceByUnit
+                  ? eachProduct.priceByUnit
+                  : eachProduct.price_instructions.unit_price}{" "}
+                €
               </Typography>
               <Divider />
               <Typography variant="body2" sx={{ my: 1 }}>
                 <b>Peso: </b>
-                {eachProduct.weight ? eachProduct.weight : eachProduct.price_instructions.unit_size * 1000} g
+                {eachProduct.weight
+                  ? eachProduct.weight
+                  : eachProduct.price_instructions.unit_size * 1000}{" "}
+                g
               </Typography>
               <Divider />
-              <Typography variant="body2" sx={{ my: 1 }}>
+              <Typography variant="body2" sx={{ mt: 1, mb: 3 }}>
                 <b>Formato:</b> {eachProduct.packaging}
               </Typography>
+              <div>
+                <button style={{padding: 5, marginLeft: 3, marginRight:6}}><EditRoundedIcon/></button>
+                <button style={{padding: 5, marginLeft: 6, marginRight:3}}><DeleteOutlineOutlinedIcon/></button>
+              </div>
             </div>
           </div>
         </CardContent>

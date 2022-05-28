@@ -18,21 +18,26 @@ function AddForm(props) {
   const [priceByUnit, setPriceByUnit] = useState(0);
   const [weight, setWeight] = useState("");
   const [format, setFormat] = useState("");
-  const [image, setImage] = useState("");  
-  
+  const [image, setImage] = useState("");
 
   //!INTERNAL FUNCTIONS:
 
   //FUNCTION TO ADD NEW PRODUCT:
-   const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addProduct({ display_name:name, priceByUnit:priceByUnit, weight:weight, packaging:format, thumbnail:image });
+    addProduct({
+      display_name: name,
+      priceByUnit: priceByUnit,
+      weight: weight,
+      packaging: format,
+      thumbnail: image,
+    });
     setName("");
     setPriceByUnit("");
     setWeight("");
     setFormat("");
     setImage("");
-  }
+  };
 
   //RENDER VIEW:
   return (
@@ -62,8 +67,11 @@ function AddForm(props) {
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
+                  InputProps={{
+                    style: { color: "#229e6b" },
+                  }}
                   name="name"
-                  onChange={(e) => setName(e.target.value)}                  
+                  onChange={(e) => setName(e.target.value)}
                   value={name}
                   sx={{ mb: 1 }}
                 />
@@ -79,7 +87,7 @@ function AddForm(props) {
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
-                  InputProps={{ inputProps: { min: 0 } }}
+                  InputProps={{ inputProps: { min: 0, color: "#229e6b" } }}
                   name="priceByUnit"
                   onChange={(e) => setPriceByUnit(e.target.value)}
                   value={priceByUnit}
@@ -97,8 +105,11 @@ function AddForm(props) {
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
                   }}
+                  InputProps={{
+                    style: { color: "#229e6b" },
+                  }}
                   name="weight"
-                  onChange={(e) => setWeight(e.target.value)}                  
+                  onChange={(e) => setWeight(e.target.value)}
                   value={weight}
                   sx={{ mb: 1 }}
                 />
@@ -113,6 +124,9 @@ function AddForm(props) {
                   label={"Formato"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
+                  }}
+                  InputProps={{
+                    style: { color: "#229e6b" },
                   }}
                   name="format"
                   onChange={(e) => setFormat(e.target.value)}
@@ -130,6 +144,9 @@ function AddForm(props) {
                   label={"URL de la Imagen"}
                   InputLabelProps={{
                     style: { color: "#bdbdbd" },
+                  }}
+                  InputProps={{
+                    style: { color: "#229e6b" },
                   }}
                   name="image"
                   onChange={(e) => setImage(e.target.value)}

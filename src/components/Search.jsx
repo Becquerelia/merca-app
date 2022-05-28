@@ -1,6 +1,7 @@
 //!IMPORTS:
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
+import SearchIcon from '@mui/icons-material/Search';
 
 //!MAIN FUNCTION:
 function Search(props) {
@@ -18,7 +19,7 @@ function Search(props) {
   return (
     <div className="container">
       <TextField
-        label="Buscar un producto"
+        label={<SearchIcon/>}
         margin="dense"
         color="success"
         type="text"
@@ -27,6 +28,9 @@ function Search(props) {
         sx={{ mb: 2 }}
         InputLabelProps={{
           style: { color: "#bdbdbd"},
+        }}
+        InputProps={{
+          style: { color: "#229e6b"},
         }}
         value={search}
         onChange={handleChange}

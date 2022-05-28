@@ -1,6 +1,7 @@
 //!IMPORTS:
 import { useNavigate } from "react-router-dom";
 import { AppBar, Button, Toolbar } from "@mui/material";
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 //!MAIN FUNCTION:
 function Navbar() {
@@ -17,7 +18,7 @@ function Navbar() {
             navigate("/");
           }}
         >
-         <b>INICIO</b> 
+         <HomeRoundedIcon  /> 
         </Button>
 
         <Button
