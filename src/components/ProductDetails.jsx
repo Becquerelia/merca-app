@@ -19,9 +19,9 @@ import { useState } from "react";
 //!MAIN FUNCTION:
 function ProductDetails(props) {
   //CONSTANTS & HOOKS:
-  const { eachProduct, deleteProduct } = props;
-  const [product, setProduct] = useState(null);
+  const { eachProduct, updateProduct, deleteProduct } = props;
   const [open, setOpen] = useState(false);
+  const [openUpdate, setOpenUpdate] = useState(false);  
   const [openDelete, setOpenDelete] = useState(false);
   const navigate = useNavigate();
 
@@ -32,21 +32,32 @@ function ProductDetails(props) {
     setOpen(true);
   };
 
+  //FUNCTION TO OPEN A MODAL TO UPDATE A PRODUCT:
+  const handleOpenUpdate = (e) => {
+    e.preventDefault();
+    setOpenUpdate(true);
+  };
 
   //FUNCTION TO OPEN A MODAL TO DELETE A PRODUCT:
   const handleOpenDelete = (e) => {
     e.preventDefault();
     setOpenDelete(true);
   };
+  
+  //FUNCTION TO CLOSE MODAL AND UPDATE A PRODUCT:
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    updateProduct({eachProduct});
+    setOpenUpdate(false);
+  };
 
-  //FUNCTION TO OPEN A MODAL TO DELETE A PRODUCT:
+  //FUNCTION TO CLOSE MODAL AND DELETE A PRODUCT:
   const handleDelete = (e) => {
-    e.preventDefault();    
+    e.preventDefault();
     deleteProduct(eachProduct.display_name);
     setOpenDelete(false);
-    setOpenDelete(false);
   };
-    
+
   return (
     <div>
       <Card
@@ -114,10 +125,36 @@ function ProductDetails(props) {
               <div>
                 <button
                   style={{ padding: 5, marginLeft: 3, marginRight: 6 }}
-                  onClick={handleOpenDelete}
+                  onClick={handleOpenUpdate}
                 >
                   <EditRoundedIcon />
                 </button>
+                <Dialog
+                  open={openUpdate}
+                  onClose={() => setOpenUpdate(false)}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <Box sx={{ backgroundColor: "background.default" }}>
+                    <DialogTitle id="alert-dialog-title" color={"#229e6b"}>
+                      Editar producto
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText
+                        id="alert-dialog-description"
+                        color={"black"}
+                      >
+                        Actualizar...
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <button onClick={() => setOpenUpdate(false)}>
+                        CANCELAR
+                      </button>
+                      <button onClick={handleUpdate}>ACTUALIZAR</button>
+                    </DialogActions>
+                  </Box>
+                </Dialog>
                 <button
                   style={{ padding: 5, marginLeft: 6, marginRight: 3 }}
                   onClick={handleOpenDelete}
@@ -145,10 +182,11 @@ function ProductDetails(props) {
                       </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                    <button onClick={() => setOpenDelete(false)}>¡MEJOR NO!</button>
-                    <button onClick={handleDelete}>SÍ, POR FAVOR</button>
-              
-            </DialogActions>
+                      <button onClick={() => setOpenDelete(false)}>
+                        ¡MEJOR NO!
+                      </button>
+                      <button onClick={handleDelete}>SÍ, POR FAVOR</button>
+                    </DialogActions>
                   </Box>
                 </Dialog>
               </div>

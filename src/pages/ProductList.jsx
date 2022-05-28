@@ -71,6 +71,15 @@ const searchProduct = (searchQuery) => {
   setAllProductsToRender(filteredProducts);
 }
 
+//FUNCTION TO UPDATE A PRODUCT:
+const updateProduct = (product) => {
+  const indexProduct = allProducts.findIndex(eachProduct => eachProduct.display_name === product.display_name);
+  const updateList = JSON.parse(JSON.stringify(allProducts));
+  updateList [indexProduct] = product
+  setAllProducts(updateList);
+  setAllProductsToRender(updateList);
+}
+
 //FUNCTION TO DELETE A PRODUCT:
 const deleteProduct = (productName) => {
   const newList = JSON.parse(JSON.stringify(allProducts));
@@ -119,7 +128,7 @@ const deleteProduct = (productName) => {
       
         {allProductsToRender.map((eachProduct, index) => {          
           return (
-            <ProductDetails eachProduct={eachProduct} deleteProduct={deleteProduct} />            
+            <ProductDetails eachProduct={eachProduct} updateProduct={updateProduct} deleteProduct={deleteProduct} />            
           );
         })}
       </div>
