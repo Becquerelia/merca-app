@@ -38,7 +38,7 @@ function ProductList() {
 
   //!INTERNAL FUNCTIONS:
 
-  //FUNCTION TO GET PRODUCT LIST BY API CALL:
+  //? FUNCTION TO GET PRODUCT LIST BY API CALL (API CORS PREVENTS ACCESS):
   /* const getAllProducts = async () => {
     try {
       const response = await axios.get(

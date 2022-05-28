@@ -22,7 +22,7 @@ function CategoriesList() {
 
   //!INTERNAL FUNCTIONS:
 
-  //FUNCTION TO GET CATEGORIES LIST BY API CALL:
+  //? FUNCTION TO GET CATEGORIES LIST BY API CALL (API CORS PREVENTS ACCESS):
   /* const getAllCategories = async () => {
      try {
        const response = await axios.get(
