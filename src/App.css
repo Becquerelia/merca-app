@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 button {
   color: white;
   background-color: #26b879;
@@ -46,7 +50,7 @@ button:hover {
 
 #footer-style {
   color: #229e6b;
-  margin-top: 8rem;
+  margin-top: 3rem;
 }
 
 @media (max-width: 800px) {

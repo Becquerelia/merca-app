@@ -1,6 +1,7 @@
 //!IMPORTS:
 import { useNavigate } from "react-router-dom";
-import logoMercadona from "../assets/logo-mercadona.png"
+import logoMercadona from "../assets/logo-mercadona.png";
+import cestaMercadona from "../assets/logoCesta.png";
 import {
   Box,
   Button,  
@@ -10,7 +11,6 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-import SendIcon from '@mui/icons-material/Send';
 
 //!MAIN FUNCTION:
 
@@ -38,19 +38,21 @@ function Home() {
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
-          pt: 10,
+          pt: 5,
         }}
       >
-        <Card variant={"outlined"} sx={{ p: 10, m: 3 }}>
+        <Card variant={"outlined"} sx={{ p: 6, m: 3 }}>
           <CardContent sx={{ p: 1 }}>
             <Typography
-              sx={{ fontSize: 16, fontWeight: "bold" }}
+              sx={{ fontSize: 16, fontWeight: "bold", pb: 5 }}
               color="text.primary"
               gutterBottom
               align={"center"}
             >
               ¡Haz click para consultar el listado de chocolates ordenados por categoría!
             </Typography>
+
+            <img src={cestaMercadona} alt="Logo" width="200rem"/>
             
           </CardContent>
           <CardActions
