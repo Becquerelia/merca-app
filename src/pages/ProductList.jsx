@@ -25,7 +25,7 @@ function ProductList() {
 
   useEffect(() => {
     getAllProducts();
-  }, []);
+  }, []); 
 
   //!INTERNAL FUNCTIONS:
 
@@ -62,13 +62,21 @@ function ProductList() {
     setAllProductsToRender([product, ...allProducts]);
     setShowForm(!showForm);
   }
-  
+
 //FUNCTION TO SEARCH A PRODUCT:
 const searchProduct = (searchQuery) => {  
   const filteredProducts = allProducts.filter((eachProduct) => {
     return eachProduct.display_name.toUpperCase().includes(searchQuery.toUpperCase());    
   });
   setAllProductsToRender(filteredProducts);
+}
+
+//FUNCTION TO DELETE A PRODUCT:
+const deleteProduct = (productName) => {
+  const newList = JSON.parse(JSON.stringify(allProducts));
+  const filteredArr = newList.filter(eachProduct => eachProduct.display_name !== productName);
+  setAllProducts(filteredArr);
+  setAllProductsToRender(filteredArr);
 }
 
   //LOADING SYSTEM:
@@ -111,7 +119,7 @@ const searchProduct = (searchQuery) => {
       
         {allProductsToRender.map((eachProduct, index) => {          
           return (
-            <ProductDetails eachProduct={eachProduct} />            
+            <ProductDetails eachProduct={eachProduct} deleteProduct={deleteProduct} />            
           );
         })}
       </div>

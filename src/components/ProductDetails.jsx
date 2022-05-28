@@ -11,17 +11,18 @@ import {
   CardContent,
   Divider,
 } from "@mui/material";
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import EditRoundedIcon from "@mui/icons-material/EditRounded";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
 //!MAIN FUNCTION:
 function ProductDetails(props) {
   //CONSTANTS & HOOKS:
-  const { eachProduct } = props;
+  const { eachProduct, deleteProduct } = props;
   const [product, setProduct] = useState(null);
   const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
   const navigate = useNavigate();
 
   //!INTERNAL FUNCTIONS:
@@ -31,9 +32,21 @@ function ProductDetails(props) {
     setOpen(true);
   };
 
-  //FUNCTION TO CLOSE MODAL AND SET STATE:
-  const handleClose = () => setOpen(false);
 
+  //FUNCTION TO OPEN A MODAL TO DELETE A PRODUCT:
+  const handleOpenDelete = (e) => {
+    e.preventDefault();
+    setOpenDelete(true);
+  };
+
+  //FUNCTION TO OPEN A MODAL TO DELETE A PRODUCT:
+  const handleDelete = (e) => {
+    e.preventDefault();    
+    deleteProduct(eachProduct.display_name);
+    setOpenDelete(false);
+    setOpenDelete(false);
+  };
+    
   return (
     <div>
       <Card
@@ -49,17 +62,16 @@ function ProductDetails(props) {
               width="80%"
               className="zoomEffect"
               onClick={handleOpen}
-              product={product}
             />
             <Dialog
               open={open}
-              onClose={handleClose}
+              onClose={() => setOpen(false)}
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
             >
               <Box sx={{ backgroundColor: "background.default" }}>
                 <DialogTitle id="alert-dialog-title">
-                  {eachProduct.display_name}
+                  <b>{eachProduct.display_name}</b>
                 </DialogTitle>
                 <DialogContent>
                   <img
@@ -91,20 +103,54 @@ function ProductDetails(props) {
                 €
               </Typography>
               <Divider />
-              <Typography variant="body2" sx={{ my: 1 }}>
-                <b>Peso: </b>
+
+              <Typography variant="body2" sx={{ mt: 1, mb: 3 }}>
+                {eachProduct.packaging} -{" "}
                 {eachProduct.weight
                   ? eachProduct.weight
                   : eachProduct.price_instructions.unit_size * 1000}{" "}
                 g
               </Typography>
-              <Divider />
-              <Typography variant="body2" sx={{ mt: 1, mb: 3 }}>
-                <b>Formato:</b> {eachProduct.packaging}
-              </Typography>
               <div>
-                <button style={{padding: 5, marginLeft: 3, marginRight:6}}><EditRoundedIcon/></button>
-                <button style={{padding: 5, marginLeft: 6, marginRight:3}}><DeleteOutlineOutlinedIcon/></button>
+                <button
+                  style={{ padding: 5, marginLeft: 3, marginRight: 6 }}
+                  onClick={handleOpenDelete}
+                >
+                  <EditRoundedIcon />
+                </button>
+                <button
+                  style={{ padding: 5, marginLeft: 6, marginRight: 3 }}
+                  onClick={handleOpenDelete}
+                >
+                  <DeleteOutlineOutlinedIcon />
+                </button>
+                <Dialog
+                  open={openDelete}
+                  onClose={() => setOpenDelete(false)}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <Box sx={{ backgroundColor: "background.default" }}>
+                    <DialogTitle id="alert-dialog-title" color={"#229e6b"}>
+                      Eliminar producto
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText
+                        id="alert-dialog-description"
+                        color={"black"}
+                      >
+                        ¿Seguro que desea eliminar "
+                        <i>{eachProduct.display_name}</i>" de la lista de
+                        productos?
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                    <button onClick={() => setOpenDelete(false)}>¡MEJOR NO!</button>
+                    <button onClick={handleDelete}>SÍ, POR FAVOR</button>
+              
+            </DialogActions>
+                  </Box>
+                </Dialog>
               </div>
             </div>
           </div>

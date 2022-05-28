@@ -23,7 +23,7 @@ function AddForm(props) {
   //!INTERNAL FUNCTIONS:
 
   //FUNCTION TO ADD NEW PRODUCT:
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     addProduct({
       display_name: name,
