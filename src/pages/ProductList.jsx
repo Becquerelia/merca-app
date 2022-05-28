@@ -11,7 +11,7 @@ import {
   CardActions,
   Divider,
 } from "@mui/material";
-import plus from "../assets/plus.png"
+import plus from "../assets/plus.png";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SyncLoader from "react-spinners/SyncLoader";
@@ -68,7 +68,7 @@ function ProductList() {
     <div className="App">
       <div>
         <Typography
-          sx={{ pt: 8, pb: 4, fontSize: 40}}
+          sx={{ pt: 8, pb: 4, fontSize: 40 }}
           color="black"
           gutterBottom
           align={"center"}
@@ -76,7 +76,10 @@ function ProductList() {
           {productTitle.toUpperCase()}
         </Typography>
 
-        <button   style={{marginBottom: "2rem"}} onClick={() => setShowForm(!showForm)}>
+        <button
+          style={{ marginBottom: "2rem" }}
+          onClick={() => setShowForm(!showForm)}
+        >
           {showForm ? <b>HIDE FORM</b> : <b>ADD PRODUCT</b>}
         </button>
         <Collapse in={showForm}>
@@ -84,25 +87,23 @@ function ProductList() {
         </Collapse>
       </div>
 
-      <div className="cardGrid" >
+      <div className="cardGrid">
         {allProducts.map((eachProduct, index) => {
           return (
             <Card
               variant={"outlined"}
               maxWidth={"sm"}
-              sx={{ py:2, px: 8, m: 3, borderColor: "#26b879" }}
+              sx={{ py: 2, px: 8, m: 3, borderColor: "#26b879" }}
               key={eachProduct.id}
-              
             >
               <CardContent sx={{ p: 1 }} className="cardText">
                 <div>
-                  
-                    <img
-                      src={eachProduct.thumbnail}
-                      alt={eachProduct.display_name}
-                      width="80%"
-                    />                    
-                  
+                  <img
+                    src={eachProduct.thumbnail}
+                    alt={eachProduct.display_name}
+                    width="80%"
+                  />
+
                   <div>
                     <Typography
                       maxWidth={"sm"}
@@ -116,16 +117,18 @@ function ProductList() {
                     <br />
                     <Divider />
                     <Typography variant="body2" sx={{ my: 1 }}>
-                      <b>Precio: </b>{" "}
+                      <b>Precio: </b>
                       {eachProduct.price_instructions.unit_price} €
                     </Typography>
                     <Divider />
                     <Typography variant="body2" sx={{ my: 1 }}>
-                      <b>Peso:</b>{" "}
-                      {eachProduct.price_instructions.unit_size * 1000} g -{" "}
+                      <b>Peso: </b>
+                      {eachProduct.price_instructions.unit_size * 1000} g
+                    </Typography>
+                    <Divider />
+                    <Typography variant="body2" sx={{ my: 1 }}>
                       <b>Formato:</b> {eachProduct.packaging}
                     </Typography>
-                   
                   </div>
                 </div>
               </CardContent>
