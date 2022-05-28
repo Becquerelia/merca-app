@@ -5,6 +5,7 @@ import { useEffect, useState, useContext } from "react";
 import Home from "./pages/Home";
 import CategoriesList from './pages/CategoriesList';
 import ProductList from './pages/ProductList';
+import Contact from './pages/Contact';
 import Error from './pages/Error';
 import NotFound from './pages/NotFound';
 import Navbar from "./components/Navbar";
@@ -24,8 +25,8 @@ function App() {
        <Route path="/" element={ <Home /> } />
        <Route path="/categories-list" element={ <CategoriesList /> } />
        <Route path="/categories-list/:id/product-list" element={ <ProductList /> } />
+       <Route path="/contact" element={ <Contact/> } />
         
-
        <Route path="/error" element={ <Error/> } />
        <Route path="*" element={ <NotFound /> } />  
 

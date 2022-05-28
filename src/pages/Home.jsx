@@ -41,7 +41,7 @@ function Home() {
           pt: 10,
         }}
       >
-        <Card variant={"outlined"} sx={{ p: 3, m: 3 }}>
+        <Card variant={"outlined"} sx={{ p: 10, m: 3 }}>
           <CardContent sx={{ p: 1 }}>
             <Typography
               sx={{ fontSize: 16, fontWeight: "bold" }}
@@ -49,12 +49,13 @@ function Home() {
               gutterBottom
               align={"center"}
             >
-              Consultar Listado de Productos
+              ¡Haz click para consultar el listado de chocolates ordenados por categoría!
             </Typography>
             
           </CardContent>
           <CardActions
             sx={{
+              pt: 5,
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-around",
@@ -66,7 +67,7 @@ function Home() {
                 navigate("/categories-list");
               }}
             >
-             <b>VER LISTADO</b>
+             <b>VER CATEGORÍAS</b>
             </button>
           </CardActions>
         </Card>
