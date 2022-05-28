@@ -20,7 +20,7 @@ This mini App, built as part of a technical test, show a catalog of chocolate pr
 | `/contact`                | Contact              | public      | Contact with Mercadona company |
 
 
-####  Pages:
+###  Pages:
 
 - Home
 - CategoriesList
@@ -28,7 +28,7 @@ This mini App, built as part of a technical test, show a catalog of chocolate pr
 - Error
 - NotFound
 
-####  Components:
+###  Components:
 
 - NavBar
 - AddCategoryForm
