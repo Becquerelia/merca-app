@@ -83,7 +83,7 @@ function ProductDetails(props) {
               <Divider />
               <Typography variant="body2" sx={{ my: 1 }}>
                 <b>Precio: </b>
-                { eachProduct.price !== null ? eachProduct.price : eachProduct.price_instructions.unit_price} €
+                { eachProduct.priceByUnit ? eachProduct.priceByUnit : eachProduct.price_instructions.unit_price} €
               </Typography>
               <Divider />
               <Typography variant="body2" sx={{ my: 1 }}>
