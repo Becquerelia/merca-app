@@ -25,11 +25,16 @@ function ProductDetails(props) {
   const [openUpdate, setOpenUpdate] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [name, setName] = useState(eachProduct.display_name);
-  const [priceByUnit, setPriceByUnit] = useState(eachProduct.priceByUnit);
+  const [priceByUnit, setPriceByUnit] = useState(0);
   const [weight, setWeight] = useState(eachProduct.weight);
   const [format, setFormat] = useState(eachProduct.packaging);
   const [image, setImage] = useState(eachProduct.thumbnail);
+  const [errorMessage, setErrorMessage] = useState(false)
   const navigate = useNavigate();
+
+  const errorMessageColor = {
+    color:"red"
+  }
 
   //!INTERNAL FUNCTIONS:
   //FUNCTION TO OPEN A MODAL WITH AN IMAGE:
@@ -53,7 +58,10 @@ function ProductDetails(props) {
   //FUNCTION TO CLOSE MODAL AND UPDATE A PRODUCT:
   const handleUpdate = (e) => {
     e.preventDefault();
-    updateProduct({
+    if (!name || !priceByUnit || !weight || !format || !image) {
+      setErrorMessage(true)
+    } else {
+      updateProduct({
       display_name: name,
       priceByUnit: priceByUnit,
       weight: weight,
@@ -61,6 +69,8 @@ function ProductDetails(props) {
       thumbnail: image,
     });
     setOpenUpdate(false);
+    setErrorMessage(false);
+    }    
   };
 
   //FUNCTION TO CLOSE MODAL AND DELETE A PRODUCT:
@@ -150,6 +160,8 @@ function ProductDetails(props) {
                   <Box sx={{ backgroundColor: "background.default" }}>
                     <DialogTitle id="alert-dialog-title" color={"#229e6b"}>
                       Editar producto
+                      <br/>
+                       <p style={errorMessageColor}> {errorMessage ? "Por favor, complete todos los campos" : null}</p> 
                     </DialogTitle>
                     <DialogContent>
                       <Box

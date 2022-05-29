@@ -74,10 +74,16 @@ const searchProduct = (searchQuery) => {
 //FUNCTION TO UPDATE A PRODUCT:
 const updateProduct = (product) => {
   const indexProduct = allProducts.findIndex(eachProduct => eachProduct.display_name === product.display_name);
-  const updateList = JSON.parse(JSON.stringify(allProducts));
+  if (indexProduct === -1) {
+    setAllProducts ([product, ...allProducts]);
+    setAllProductsToRender ([product, ...allProducts]);
+  } else {
+    const updateList = JSON.parse(JSON.stringify(allProducts));
   updateList [indexProduct] = product
   setAllProducts(updateList);
+  console.log(updateList)
   setAllProductsToRender(updateList);
+  }  
 }
 
 //FUNCTION TO DELETE A PRODUCT:
@@ -128,7 +134,7 @@ const deleteProduct = (productName) => {
       
         {allProductsToRender.map((eachProduct, index) => {          
           return (
-            <ProductDetails eachProduct={eachProduct} updateProduct={updateProduct} deleteProduct={deleteProduct} />            
+            <ProductDetails key={eachProduct.display_name + index} eachProduct={eachProduct} updateProduct={updateProduct} deleteProduct={deleteProduct} />            
           );
         })}
       </div>
