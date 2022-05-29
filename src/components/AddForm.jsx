@@ -19,13 +19,21 @@ function AddForm(props) {
   const [weight, setWeight] = useState("");
   const [format, setFormat] = useState("");
   const [image, setImage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  const errorMessageColor = {
+    color:"red"
+  }
 
   //!INTERNAL FUNCTIONS:
 
   //FUNCTION TO ADD NEW PRODUCT:
   const handleSubmit = (e) => {
     e.preventDefault();
-    addProduct({
+    if (!name || !priceByUnit || !weight || !format || !image) {
+      setErrorMessage(true);
+    } else {
+      addProduct({
       display_name: name,
       priceByUnit: priceByUnit,
       weight: weight,
@@ -37,6 +45,8 @@ function AddForm(props) {
     setWeight("");
     setFormat("");
     setImage("");
+    setErrorMessage(false);
+    }    
   };
 
   //RENDER VIEW:
@@ -55,6 +65,8 @@ function AddForm(props) {
                 noValidate
                 sx={{ mt: 1 }}
               >
+              <p style={errorMessageColor} >{errorMessage ? <b>Por favor, complete todos los campos</b> : null}</p>  
+              <br />
                 <TextField
                   required
                   fullWidth
