@@ -24,7 +24,7 @@ function Error() {
         >
           <GppBadIcon /> <br /> <br />
           ¡Vaya! parece que estamos teniendo algún problema interno... <br />
-          ¡Vuelve más tarde!
+          ¡Vuelve más tarde! Mientras tanto puedes ir a Mercadona a comprar chocolate.
         </Typography>
       </Box>
     </div>
