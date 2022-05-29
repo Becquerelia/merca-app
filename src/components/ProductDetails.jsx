@@ -24,17 +24,10 @@ function ProductDetails(props) {
   const [open, setOpen] = useState(false);
   const [openUpdate, setOpenUpdate] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
-  const [name, setName] = useState(eachProduct.display_name);
-  const [priceByUnit, setPriceByUnit] = useState(0);
-  const [weight, setWeight] = useState(eachProduct.weight);
-  const [format, setFormat] = useState(eachProduct.packaging);
-  const [image, setImage] = useState(eachProduct.thumbnail);
-  const [errorMessage, setErrorMessage] = useState(false)
+  const [display_name, setDisplay_name] = useState(eachProduct.display_name);
+  const [packaging, setPackaging] = useState(eachProduct.packaging);
+  const [thumbnail, setThumbnail] = useState(eachProduct.thumbnail);  
   const navigate = useNavigate();
-
-  const errorMessageColor = {
-    color:"red"
-  }
 
   //!INTERNAL FUNCTIONS:
   //FUNCTION TO OPEN A MODAL WITH AN IMAGE:
@@ -57,20 +50,13 @@ function ProductDetails(props) {
 
   //FUNCTION TO CLOSE MODAL AND UPDATE A PRODUCT:
   const handleUpdate = (e) => {
-    e.preventDefault();
-    if (!name || !priceByUnit || !weight || !format || !image) {
-      setErrorMessage(true)
-    } else {
+    e.preventDefault();    
       updateProduct({
-      display_name: name,
-      priceByUnit: priceByUnit,
-      weight: weight,
-      packaging: format,
-      thumbnail: image,
+      display_name,
+      packaging,
+      thumbnail,
     });
-    setOpenUpdate(false);
-    setErrorMessage(false);
-    }    
+    setOpenUpdate(false);       
   };
 
   //FUNCTION TO CLOSE MODAL AND DELETE A PRODUCT:
@@ -159,9 +145,7 @@ function ProductDetails(props) {
                 >
                   <Box sx={{ backgroundColor: "background.default" }}>
                     <DialogTitle id="alert-dialog-title" color={"#229e6b"}>
-                      Editar producto
-                      <br/>
-                       <p style={errorMessageColor}> {errorMessage ? "Por favor, complete todos los campos" : null}</p> 
+                      Editar producto                      
                     </DialogTitle>
                     <DialogContent>
                       <Box
@@ -174,8 +158,8 @@ function ProductDetails(props) {
                           required
                           fullWidth
                           type={"text"}
-                          id={"name"}
-                          autoComplete="name"
+                          id={"display_name"}
+                          autoComplete="display_name"
                           variant={"filled"}
                           color="success"
                           label={"Nombre del producto"}
@@ -185,57 +169,17 @@ function ProductDetails(props) {
                           InputProps={{
                             style: { color: "#229e6b" },
                           }}
-                          name="name"
-                          onChange={(e) => setName(e.target.value)}
-                          value={name}
-                          sx={{ mb: 1 }}
-                        />
-                        <TextField
-                          required
-                          fullWidth
-                          type={"number"}
-                          id={"priceByUnit"}
-                          autoComplete="priceByUnit"
-                          variant={"filled"}
-                          color="success"
-                          label={"Precio (€)"}
-                          InputLabelProps={{
-                            style: { color: "#bdbdbd" },
-                          }}
-                          InputProps={{
-                            inputProps: { min: 0, color: "#229e6b" },
-                          }}
-                          name="priceByUnit"
-                          onChange={(e) => setPriceByUnit(e.target.value)}
-                          value={priceByUnit}
+                          name="display_name"
+                          onChange={(e) => setDisplay_name(e.target.value)}
+                          value={display_name}
                           sx={{ mb: 1 }}
                         />
                         <TextField
                           required
                           fullWidth
                           type={"text"}
-                          id={"weight"}
-                          autoComplete="weight"
-                          variant={"filled"}
-                          color="success"
-                          label={"Peso (en gramos)"}
-                          InputLabelProps={{
-                            style: { color: "#bdbdbd" },
-                          }}
-                          InputProps={{
-                            style: { color: "#229e6b" },
-                          }}
-                          name="weight"
-                          onChange={(e) => setWeight(e.target.value)}
-                          value={weight}
-                          sx={{ mb: 1 }}
-                        />
-                        <TextField
-                          required
-                          fullWidth
-                          type={"text"}
-                          id={"format"}
-                          autoComplete="format"
+                          id={"packaging"}
+                          autoComplete="packaging"
                           variant={"filled"}
                           color="success"
                           label={"Formato"}
@@ -245,17 +189,17 @@ function ProductDetails(props) {
                           InputProps={{
                             style: { color: "#229e6b" },
                           }}
-                          name="format"
-                          onChange={(e) => setFormat(e.target.value)}
-                          value={format}
+                          name="packaging"
+                          onChange={(e) => setPackaging(e.target.value)}
+                          value={packaging}
                           sx={{ mb: 1 }}
                         />
                         <TextField
                           required
                           fullWidth
                           type={"text"}
-                          id={"image"}
-                          autoComplete="image"
+                          id={"thumbnail"}
+                          autoComplete="thumbnail"
                           variant={"filled"}
                           color="success"
                           label={"URL de la Imagen"}
@@ -265,9 +209,9 @@ function ProductDetails(props) {
                           InputProps={{
                             style: { color: "#229e6b" },
                           }}
-                          name="image"
-                          onChange={(e) => setImage(e.target.value)}
-                          value={image}
+                          name="thumbnail"
+                          onChange={(e) => setThumbnail(e.target.value)}
+                          value={thumbnail}
                           sx={{ mb: 1 }}
                         />
                         <DialogActions>
@@ -324,3 +268,6 @@ function ProductDetails(props) {
 }
 
 export default ProductDetails;
+
+
+//ooooooooooooooooooooooooooooooooooooooouuuuuuuuuuuuuuuuuuuuuuuuuuuIIIIIIIIII
