@@ -2,20 +2,12 @@
 import { useNavigate } from "react-router-dom";
 import logoMercadona from "../assets/logo-mercadona.png";
 import cestaMercadona from "../assets/logoCesta.png";
-import {
-  Box,
-  Button,  
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardActions, CardContent, Typography } from "@mui/material";
 
 //!MAIN FUNCTION:
-
 function Home() {
 
+  //CONSTANTS & HOOKS:
   const navigate = useNavigate();  
 
   //RENDER VIEW:
@@ -62,8 +54,7 @@ function Home() {
               flexDirection: "row",
               justifyContent: "space-around",
             }}
-          >
-          
+          >          
             <button
               onClick={() => {
                 navigate("/categories-list");
@@ -72,11 +63,10 @@ function Home() {
              <b>VER CATEGORÍAS</b>
             </button>
           </CardActions>
-        </Card>
-        
+        </Card>        
       </Box>
     </div>
   )
 }
 
-export default Home
+export default Home;

@@ -1,20 +1,7 @@
 //!IMPORTS:
-import {
-  Box,
-  TextField,
-  Typography,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Card,
-  CardContent,
-  Divider,
-} from "@mui/material";
+import { Box, TextField, Typography, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Card, CardContent, Divider } from "@mui/material";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
 //!MAIN FUNCTION:
@@ -26,8 +13,7 @@ function ProductDetails(props) {
   const [openDelete, setOpenDelete] = useState(false);
   const [display_name, setDisplay_name] = useState(eachProduct.display_name);
   const [packaging, setPackaging] = useState(eachProduct.packaging);
-  const [thumbnail, setThumbnail] = useState(eachProduct.thumbnail);  
-  const navigate = useNavigate();
+  const [thumbnail, setThumbnail] = useState(eachProduct.thumbnail);
 
   //!INTERNAL FUNCTIONS:
   //FUNCTION TO OPEN A MODAL WITH AN IMAGE:
@@ -50,13 +36,13 @@ function ProductDetails(props) {
 
   //FUNCTION TO CLOSE MODAL AND UPDATE A PRODUCT:
   const handleUpdate = (e) => {
-    e.preventDefault();    
-      updateProduct({
+    e.preventDefault();
+    updateProduct({
       display_name,
       packaging,
       thumbnail,
     });
-    setOpenUpdate(false);       
+    setOpenUpdate(false);
   };
 
   //FUNCTION TO CLOSE MODAL AND DELETE A PRODUCT:
@@ -124,11 +110,10 @@ function ProductDetails(props) {
               <Divider />
 
               <Typography variant="body2" sx={{ mt: 1, mb: 3 }}>
-                {eachProduct.packaging} -{" "}
                 {eachProduct.weight
                   ? eachProduct.weight
                   : eachProduct.price_instructions.unit_size * 1000}{" "}
-                g
+                g ({eachProduct.packaging})
               </Typography>
               <div>
                 <button
@@ -145,7 +130,7 @@ function ProductDetails(props) {
                 >
                   <Box sx={{ backgroundColor: "background.default" }}>
                     <DialogTitle id="alert-dialog-title" color={"#229e6b"}>
-                      Editar producto                      
+                      Editar producto
                     </DialogTitle>
                     <DialogContent>
                       <Box
@@ -268,6 +253,3 @@ function ProductDetails(props) {
 }
 
 export default ProductDetails;
-
-
-//ooooooooooooooooooooooooooooooooooooooouuuuuuuuuuuuuuuuuuuuuuuuuuuIIIIIIIIII

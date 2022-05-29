@@ -5,6 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 //!MAIN FUNCTION:
 function Search(props) {
+  
   //CONSTANTS & HOOKS:
   const { searchProduct } = props;
   const [search, setSearch] = useState("");

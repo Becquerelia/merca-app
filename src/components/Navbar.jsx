@@ -5,6 +5,8 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 //!MAIN FUNCTION:
 function Navbar() {
+
+  //CONSTANTS & HOOKS:
   const navigate = useNavigate();
 
   //RENDER VIEW:

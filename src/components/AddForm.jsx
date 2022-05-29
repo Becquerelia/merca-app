@@ -1,17 +1,10 @@
 //!IMPORTS:
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Box,
-  Button,
-  Container,
-  Divider,
-  Paper,
-  TextField,
-} from "@mui/material";
+import { Box, Container, Paper, TextField } from "@mui/material";
 
 //!MAIN FUNCTION:
 function AddForm(props) {
+
   //CONSTANTS & HOOKS:
   const { addProduct } = props;
   const [name, setName] = useState("");
@@ -22,11 +15,10 @@ function AddForm(props) {
   const [errorMessage, setErrorMessage] = useState(false);
 
   const errorMessageColor = {
-    color:"red"
-  }
+    color: "red",
+  };
 
   //!INTERNAL FUNCTIONS:
-
   //FUNCTION TO ADD NEW PRODUCT:
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,19 +26,19 @@ function AddForm(props) {
       setErrorMessage(true);
     } else {
       addProduct({
-      display_name: name,
-      priceByUnit: priceByUnit,
-      weight: weight,
-      packaging: format,
-      thumbnail: image,
-    });
-    setName("");
-    setPriceByUnit("");
-    setWeight("");
-    setFormat("");
-    setImage("");
-    setErrorMessage(false);
-    }    
+        display_name: name,
+        priceByUnit: priceByUnit,
+        weight: weight,
+        packaging: format,
+        thumbnail: image,
+      });
+      setName("");
+      setPriceByUnit("");
+      setWeight("");
+      setFormat("");
+      setImage("");
+      setErrorMessage(false);
+    }
   };
 
   //RENDER VIEW:
@@ -65,8 +57,12 @@ function AddForm(props) {
                 noValidate
                 sx={{ mt: 1 }}
               >
-              <p style={errorMessageColor} >{errorMessage ? <b>Por favor, complete todos los campos</b> : null}</p>  
-              <br />
+                <p style={errorMessageColor}>
+                  {errorMessage ? (
+                    <b>Por favor, complete todos los campos</b>
+                  ) : null}
+                </p>
+                <br />
                 <TextField
                   required
                   fullWidth

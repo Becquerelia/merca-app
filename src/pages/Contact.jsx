@@ -2,20 +2,11 @@
 import telefonoAtencion from "../assets/telefonoAtencionCliente.png";
 import emailContacto from "../assets/emailContacto.png";
 import redesSociales from "../assets/redesSociales.png";
-import {
-  Box,
-  Typography,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Card,
-  CardContent,
-  Divider,
-} from "@mui/material";
+import { Typography, Card, CardContent } from "@mui/material";
 
+//!MAIN FUNCTION:
 function Contact() {
+  //RENDER VIEW:
   return (
     <div
       className="cardGrid"
@@ -36,16 +27,18 @@ function Contact() {
             gutterBottom
             align={"center"}
           >
-            Te atendemos personalmente de lunes a domingo de 7 a 22:30h, 1h menos en Canarias. <br/><br/> 800 500 220 <br/> (Gratuito)
+            Te atendemos personalmente de lunes a domingo de 7 a 22:30h, 1h
+            menos en Canarias. <br />
+            <br /> 800 500 220 <br /> (Gratuito)
           </Typography>
         </CardContent>
       </Card>
 
       <Card variant={"outlined"} sx={{ py: 2, px: 2, m: 3 }}>
         <CardContent sx={{ p: 1 }}>
-        <a href="mailto:sugerencias@mercadona.es">
-        <img src={emailContacto} alt="Logo" width="300rem" />
-      </a>
+          <a href="mailto:sugerencias@mercadona.es">
+            <img src={emailContacto} alt="Logo" width="300rem" />
+          </a>
 
           <Typography
             maxWidth={"20rem"}
@@ -55,7 +48,8 @@ function Contact() {
             gutterBottom
             align={"center"}
           >
-            Haznos llegar tus comentarios a través de nuestro correo electrónico haciendo click en el icono superior o en este 
+            Haznos llegar tus comentarios a través de nuestro correo electrónico
+            haciendo click en el icono superior o en este
             <a href="mailto:sugerencias@mercadona.es"> enlace</a>.
           </Typography>
         </CardContent>
@@ -63,7 +57,7 @@ function Contact() {
 
       <Card variant={"outlined"} sx={{ py: 2, px: 2, m: 3 }}>
         <CardContent sx={{ p: 1 }}>
-        <img src={redesSociales} alt="Logo" width="290rem" />
+          <img src={redesSociales} alt="Logo" width="290rem" />
 
           <Typography
             maxWidth={"20rem"}
@@ -73,13 +67,17 @@ function Contact() {
             gutterBottom
             align={"center"}
           >
-            También puedes contactar con nosotros desde nuestro <a href="https://www.facebook.com/mercadona/">Facebook</a>, <a href="https://twitter.com/mercadona?lang=es">Twitter</a>, <a href="https://www.youtube.com/mercadona">Youtube</a>, <a href="https://www.instagram.com/mercadona/?hl=ess">Instagram</a> y <a href="https://www.linkedin.com/company/mercadona/?originalSubdomain=es">Linkedin</a>.
+            También puedes contactar con nosotros desde nuestro{" "}
+            <a href="https://www.facebook.com/mercadona/">Facebook</a>,{" "}
+            <a href="https://twitter.com/mercadona?lang=es">Twitter</a>,{" "}
+            <a href="https://www.youtube.com/mercadona">Youtube</a>,{" "}
+            <a href="https://www.instagram.com/mercadona/?hl=ess">Instagram</a>{" "}
+            y{" "}
+            <a href="https://www.linkedin.com/company/mercadona/?originalSubdomain=es">
+              Linkedin</a>.
           </Typography>
         </CardContent>
       </Card>
-
-      
-      
     </div>
   );
 }

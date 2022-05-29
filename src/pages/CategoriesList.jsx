@@ -1,7 +1,7 @@
 //!IMPORTS:
 import { apiProducts } from "../utils/apiProducts";
 import { Paper, Container } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Box, Grid, Collapse } from "@mui/material/";
 import SyncLoader from "react-spinners/SyncLoader";
@@ -9,17 +9,16 @@ import axios from "axios";
 
 //!MAIN FUNCTION:
 function CategoriesList() {
+  
   //CONSTANTS & HOOKS:
-  const [allCategories, setAllCategories] = useState(null); 
-  const navigate = useNavigate();
+  const [allCategories, setAllCategories] = useState(null);
 
   useEffect(() => {
     getAllCategories();
   }, []);
 
   //!INTERNAL FUNCTIONS:
-
-  //? FUNCTION TO GET CATEGORIES LIST BY API CALL (API CORS PREVENTS ACCESS):
+  //? FUNCTION TO GET CATEGORIES LIST BY API CALL (API CORS PREVENTS ACCESS, BUT FUNCTION WORKS CORRECTLY):
   /* const getAllCategories = async () => {
      try {
        const response = await axios.get(
@@ -35,7 +34,6 @@ function CategoriesList() {
   //FUNCTION TO GET CATEGORIES FROM DATA FILE "apiProducts.js":
   const getAllCategories = () => {
     setAllCategories(apiProducts);
-    console.log(apiProducts);
   };
 
   //LOADING SYSTEM:
@@ -52,8 +50,7 @@ function CategoriesList() {
   //RENDER VIEW:
   return (
     <div>
-      <Container component={"main"} maxWidth={"sm"} sx={{ my: 5 }}>        
-
+      <Container component={"main"} maxWidth={"sm"} sx={{ my: 5 }}>
         <Paper
           variant={"outlined"}
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
