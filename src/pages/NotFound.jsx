@@ -28,7 +28,7 @@ function NotFound() {
           <br />
           Parece que la dirección a la que tratas de acceder no existe...
           <br />
-          ¡Prueba con otra!
+          Prueba con otra o ve a Mercadona a comprar chocolate :)
         </Typography>
       </Box>
     </div>
